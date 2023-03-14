@@ -1,0 +1,12 @@
+{
+  "bar": {
+    "baz": 42
+  },
+  "quux": "hoge",
+  "piyo": [
+    {"key": "Hoge", "value": "p"},
+    {"key": "PIYO", "value": "i"},
+    {"key": "Hoge", "value": "y"},
+    {"key": "PIYO", "value": "o"}
+  ]
+}
