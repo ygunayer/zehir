@@ -1,9 +1,22 @@
-json = "{\"type\":\"FILE\"}"
+json = "{\"name\":\"foo.txt\",\"type\":\"FILE\"}"
 
-parsed = Entry.parse!(json)
-serialized = Poison.encode!(parsed)
+expected_parsed = %Entry{
+  name: "foo.txt",
+  type: :FILE
+}
 
-IO.inspect(parsed)
-IO.puts(serialized)
-IO.puts(json)
-IO.inspect(serialized == json)
+actual_parsed = Entry.parse!(json)
+IO.puts("Deserialization:")
+IO.puts("==============")
+IO.puts("Expected: #{inspect(expected_parsed)}")
+IO.puts("Actual: #{inspect(actual_parsed)}")
+IO.puts("Matches? #{actual_parsed == expected_parsed}")
+
+IO.puts("")
+
+actual_serialized = Poison.encode!(expected_parsed)
+IO.puts("Serialization")
+IO.puts("==============")
+IO.puts("Expected: #{json}")
+IO.puts("Actual: #{actual_serialized}")
+IO.puts("Matches? #{actual_serialized == json}")
